@@ -9,6 +9,10 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import PINRemoteImage
+import PINCache
+
+
 
 
 
@@ -189,22 +193,36 @@ class ViewController: UICollectionViewController {
   }
   
   
+  
+  
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! Cell
     let rowNumber = (indexPath as IndexPath).row
     //print("CellForItemAtRow: \(rowNumber)")
     let photo = photos[rowNumber]
+    cell.textLabel.text = photo.title == "" ? "No Title" : photo.title
+    let url = photo.remoteURL
     
-    if photo.title != "" {
-    cell.textLabel.text = photo.title
-    } else {
-      cell.textLabel.text = "No Title"
-    }
-  
+      cell.imageView?.pin_setImage(from: url, placeholderImage: UIImage(named: "placeholder.png"))
+        { result in
+            if let cellToUpdate = self.collView.cellForItem(at: indexPath)    {
+              print("Cell upating at row: \(rowNumber + 1) ")
+              cellToUpdate.setNeedsLayout()
+            }
+        }
     return cell
   }
   
   
+  
+  
+  
+  
+  
+  
+  
+  /*
   
   override public func collectionView (_ collectionView: UICollectionView,
                                        willDisplay cell: UICollectionViewCell,
@@ -228,7 +246,7 @@ class ViewController: UICollectionViewController {
     
   } //end method
   
-  
+  */
 
   
   

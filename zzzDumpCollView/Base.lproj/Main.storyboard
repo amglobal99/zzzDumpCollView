@@ -41,18 +41,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8Fa-S4-tvj"/>
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailingMargin" secondItem="8Fa-S4-tvj" secondAttribute="trailing" constant="32" id="5zX-Dv-eVM"/>
-                                    <constraint firstItem="Zdf-Ji-drT" firstAttribute="top" secondItem="8Fa-S4-tvj" secondAttribute="bottom" constant="35" id="HAV-20-E3Y"/>
                                     <constraint firstItem="Zdf-Ji-drT" firstAttribute="leading" secondItem="1e2-al-3aS" secondAttribute="leadingMargin" constant="13" id="JlP-R1-sd6"/>
                                     <constraint firstItem="uCn-dy-ECF" firstAttribute="trailing" secondItem="1e2-al-3aS" secondAttribute="trailingMargin" id="V1d-xh-6HB"/>
-                                    <constraint firstItem="8Fa-S4-tvj" firstAttribute="top" secondItem="1e2-al-3aS" secondAttribute="topMargin" constant="23" id="VlV-aa-9z1"/>
                                     <constraint firstItem="uCn-dy-ECF" firstAttribute="leading" secondItem="1e2-al-3aS" secondAttribute="leadingMargin" constant="5" id="acL-QG-eAH"/>
-                                    <constraint firstItem="8Fa-S4-tvj" firstAttribute="leading" secondItem="1e2-al-3aS" secondAttribute="leadingMargin" constant="32" id="agX-2a-Ado"/>
                                     <constraint firstItem="Zdf-Ji-drT" firstAttribute="top" secondItem="uCn-dy-ECF" secondAttribute="bottom" constant="8" id="gr5-XQ-Efh"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="Zdf-Ji-drT" secondAttribute="bottom" constant="5" id="jCY-JL-T7h"/>
                                     <constraint firstItem="uCn-dy-ECF" firstAttribute="top" secondItem="1e2-al-3aS" secondAttribute="topMargin" constant="6" id="pEv-Ci-ZEN"/>
@@ -64,7 +59,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="imageView" destination="uCn-dy-ECF" id="nxt-RI-pYm"/>
-                                    <outlet property="spinner" destination="8Fa-S4-tvj" id="Myb-eu-M35"/>
                                     <outlet property="textLabel" destination="Zdf-Ji-drT" id="unu-bD-m0e"/>
                                     <segue destination="qjJ-7T-U9E" kind="show" identifier="showPhotoSegue" id="82Z-XT-1WQ"/>
                                 </connections>

@@ -22,6 +22,7 @@ class ViewController2: UIViewController {
   
   @IBOutlet weak var imageViewDetail: UIImageView!
   
+  var image: UIImage?
   
   
   enum ImageResult {
@@ -35,6 +36,7 @@ class ViewController2: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    /*
     self.fetchImageForPhoto(photo: photo)
     {    result in
       if case ImageResult.success(let image) =  result {
@@ -43,6 +45,19 @@ class ViewController2: UIViewController {
         }
       } // end if
     } // end closure
+    
+    
+    */
+    
+    let url = photo.remoteURL
+    self.imageViewDetail?.pin_setImage(from: url, placeholderImage: UIImage(named: "placeholder.png"))
+    { result in
+      
+    }
+    
+
+    
+    
   }  // end viewDidLaod
   
   
