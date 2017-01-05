@@ -36,26 +36,13 @@ class ViewController2: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    /*
-    self.fetchImageForPhoto(photo: photo)
-    {    result in
-      if case ImageResult.success(let image) =  result {
-        OperationQueue.main.addOperation() {
-          self.imageViewDetail.image = image
-        }
-      } // end if
-    } // end closure
-    
-    
-    */
-    
     let url = photo.remoteURL
     self.imageViewDetail?.pin_setImage(from: url, placeholderImage: UIImage(named: "placeholder.png"))
     { result in
       
     }
     
-
+    
     
     
   }  // end viewDidLaod
@@ -64,7 +51,7 @@ class ViewController2: UIViewController {
   
   
   
-  
+  /*
   
   func fetchImageForPhoto(photo: Item,  completion: @escaping (ImageResult) -> Void)  {
     if let image = photo.image  {
@@ -98,7 +85,10 @@ class ViewController2: UIViewController {
   } // end func
   
   
-  
+  */
+ 
+ 
+ 
     
   
 } // end class

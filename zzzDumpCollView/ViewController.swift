@@ -41,6 +41,10 @@ class ViewController: UICollectionViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+   
+    
+    
     collView.dataSource =  self
     collView.delegate =  self
     
@@ -204,6 +208,9 @@ class ViewController: UICollectionViewController {
     cell.textLabel.text = photo.title == "" ? "No Title" : photo.title
     let url = photo.remoteURL
     
+   // cell.imageView?.pin_updateWithProgress = true
+    
+    
       cell.imageView?.pin_setImage(from: url, placeholderImage: UIImage(named: "placeholder.png"))
         { result in
             if let cellToUpdate = self.collView.cellForItem(at: indexPath)    {
@@ -250,7 +257,7 @@ class ViewController: UICollectionViewController {
 
   
   
-  
+  /*
   
   func fetchImageForPhoto(photo: Item,  completion: @escaping (ImageResult) -> Void)  {
     
@@ -289,6 +296,8 @@ class ViewController: UICollectionViewController {
     } // end closure
     
   } // end func
+  
+  */
   
   
   
