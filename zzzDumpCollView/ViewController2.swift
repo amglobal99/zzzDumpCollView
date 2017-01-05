@@ -32,11 +32,7 @@ class ViewController2: UIViewController {
   
   
   
-  
-  
-  
   override func viewDidLoad() {
-    
     super.viewDidLoad()
     
     self.fetchImageForPhoto(photo: photo)
@@ -47,8 +43,6 @@ class ViewController2: UIViewController {
         }
       } // end if
     } // end closure
-    
-    
   }  // end viewDidLaod
   
   
@@ -90,15 +84,6 @@ class ViewController2: UIViewController {
   
   
   
-  
-  
-  
-  
-  
-
-  
-  
-  
-  
+    
   
 } // end class

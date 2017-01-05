@@ -37,7 +37,6 @@ class ViewController: UICollectionViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    print("starting viewdidload")
     collView.dataSource =  self
     collView.delegate =  self
     
@@ -51,7 +50,7 @@ class ViewController: UICollectionViewController {
         
           OperationQueue.main.addOperation()  {
             if case PhotosResult.success(let photos) = items {
-                  print(" We have a total of \(photos.count)  ")
+                  print(" We have a total of \(photos.count)  photos")
                   strongSelf.photos = photos
             }
             
@@ -126,6 +125,7 @@ class ViewController: UICollectionViewController {
             }
             guard response.result.value != nil else {  // Data is nil
               print("Request did not return any data")
+              completionHandler(Result.failure(   "Request did not return any data" as! Error  ) )
               return
             }
             let jsonObject:JSON  = JSON(response.result.value!)

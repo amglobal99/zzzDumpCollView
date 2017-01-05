@@ -17,7 +17,6 @@
 		0F3DECA51E1C50F90002013C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DECA41E1C50F90002013C /* Item.swift */; };
 		0F3DECA71E1C57700002013C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DECA61E1C57700002013C /* Constants.swift */; };
 		0F3DECA91E1C83D00002013C /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DECA81E1C83D00002013C /* ViewController2.swift */; };
-		0F3DECAB1E1C86CA0002013C /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3DECAA1E1C86CA0002013C /* ItemStore.swift */; };
 		548519C9BFB748445D1B0807 /* Pods_zzzDumpCollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240B962CB55CEE3ECBDEB2A9 /* Pods_zzzDumpCollView.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +45,6 @@
 		0F3DECA41E1C50F90002013C /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		0F3DECA61E1C57700002013C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0F3DECA81E1C83D00002013C /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
-		0F3DECAA1E1C86CA0002013C /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 		240B962CB55CEE3ECBDEB2A9 /* Pods_zzzDumpCollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_zzzDumpCollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B92E323F8C3A1E5135E63AB /* Pods-zzzDumpCollView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zzzDumpCollView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-zzzDumpCollView/Pods-zzzDumpCollView.debug.xcconfig"; sourceTree = "<group>"; };
 		B110BE34BEBD28053BFE00FF /* Pods-zzzDumpCollView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zzzDumpCollView.release.xcconfig"; path = "Pods/Target Support Files/Pods-zzzDumpCollView/Pods-zzzDumpCollView.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 				0F3DECA61E1C57700002013C /* Constants.swift */,
 				0F3DEC8E1E1C2A440002013C /* Info.plist */,
 				0F3DECA41E1C50F90002013C /* Item.swift */,
-				0F3DECAA1E1C86CA0002013C /* ItemStore.swift */,
 				0F3DEC8B1E1C2A440002013C /* LaunchScreen.storyboard */,
 				0F3DEC861E1C2A440002013C /* Main.storyboard */,
 				0F3DEC841E1C2A440002013C /* ViewController.swift */,
@@ -296,7 +293,6 @@
 				0F3DEC851E1C2A440002013C /* ViewController.swift in Sources */,
 				0F3DEC831E1C2A440002013C /* AppDelegate.swift in Sources */,
 				0F3DECA31E1C358D0002013C /* Cell.swift in Sources */,
-				0F3DECAB1E1C86CA0002013C /* ItemStore.swift in Sources */,
 				0F3DECA91E1C83D00002013C /* ViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

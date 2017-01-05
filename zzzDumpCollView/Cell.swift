@@ -14,11 +14,8 @@ import UIKit
 class Cell: UICollectionViewCell {
   
   
-  
   @IBOutlet weak var imageView: UIImageView!
-  
   @IBOutlet weak var textLabel: UILabel!
-  
   @IBOutlet weak var spinner: UIActivityIndicatorView!
   
   
@@ -45,14 +42,6 @@ class Cell: UICollectionViewCell {
     super.prepareForReuse()
     updateWithImage(nil )
   }
-  
-  
-  
-
-  
-  
-  
-  
   
   
   
