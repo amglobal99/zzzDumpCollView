@@ -17,78 +17,23 @@ class ViewController2: UIViewController {
   
   
   var photo: Item!
-  var store: ViewController!
+ // var store: ViewController!
   
   
   @IBOutlet weak var imageViewDetail: UIImageView!
   
-  var image: UIImage?
-  
-  
-  enum ImageResult {
-    case success(UIImage)
-    case failure(Error)
-  }
-  
-  
-  
+ 
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     let url = photo.remoteURL
-    self.imageViewDetail?.pin_setImage(from: url, placeholderImage: UIImage(named: "placeholder.png"))
-    { result in
-      
-    }
-    
-    
-    
+    self.imageViewDetail?.pin_setImage(from: url, placeholderImage: UIImage(named: "placeholder.png"))  { _ in   }
+    //self.imageViewDetail?.pin_setImage(from: url, placeholderImage: UIImage(named: "placeholder.png"), completion: nil)
     
   }  // end viewDidLaod
   
   
   
-  
-  
-  /*
-  
-  func fetchImageForPhoto(photo: Item,  completion: @escaping (ImageResult) -> Void)  {
-    if let image = photo.image  {
-      completion(.success(image) )
-    }
-    let photoURL = photo.remoteURL
-    let request = URLRequest(url: photoURL )
-    
-    Alamofire.request(request).response
-      {  response in
-        guard response.error == nil else {
-          return
-        }
-        guard response.data != nil else {
-          return
-        }
-        var result:ImageResult
-        if  let  image = UIImage(data: response.data!)  {
-          result = ImageResult.success(image)
-        } else {
-          result = ImageResult.failure("Could not create Photot" as! Error)
-        }
-        
-        if case let ImageResult.success(image) = result {
-          photo.image  = image
-        }
-        
-        completion(result)
-    } // end closure
-    
-  } // end func
-  
-  
-  */
- 
- 
- 
     
   
 } // end class

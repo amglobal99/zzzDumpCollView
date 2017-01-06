@@ -22,6 +22,8 @@ class ViewController: UICollectionViewController {
   var photos: [Item] = []
   var isDataLoaded: Bool =  false
   let url = "https://api.flickr.com/services/rest?api_key=a6d819499131071f158fd740860a5a88&method=flickr.photos.getRecent&format=json&nojsoncallback=1&extras=url_h,date_taken"
+  let rootPath = ["photos","photo"]
+  
   
   @IBOutlet var collView: UICollectionView!
   
@@ -42,9 +44,6 @@ class ViewController: UICollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-   
-    
-    
     collView.dataSource =  self
     collView.delegate =  self
     
@@ -57,11 +56,10 @@ class ViewController: UICollectionViewController {
             let items = strongSelf.photosFromJSONObject(json: jsonObject)
         
           OperationQueue.main.addOperation()  {
-            if case PhotosResult.success(let photos) = items {
-                  print(" We have a total of \(photos.count)  photos")
-                  strongSelf.photos = photos
-            }
-            
+              if case PhotosResult.success(let photos) = items {
+                    print(" We have a total of \(photos.count)  photos")
+                    strongSelf.photos = photos
+              }
               // ----Reload Data
               strongSelf.isDataLoaded = true
               strongSelf.collView.reloadData()
@@ -122,10 +120,12 @@ class ViewController: UICollectionViewController {
       guard let url:URL = URL(string: urlString) else {
         return
       }
-      let urlRequest = URLRequest(url: url)
-      
+        let urlRequest = URLRequest(url: url)
         Alamofire.request(urlRequest).responseJSON
-          { response  in
+          { [weak self] response  in
+            guard let strongSelf = self else {
+              return
+            }
             guard response.result.error == nil else {   // got an error
               print(response.result.error!)
               completionHandler(Result.failure(response.result.error!) )
@@ -137,7 +137,8 @@ class ViewController: UICollectionViewController {
               return
             }
             let jsonObject:JSON  = JSON(response.result.value!)
-            let result = jsonObject["photos","photo"]
+            //let result = jsonObject["photos","photo"]
+            let result = jsonObject[strongSelf.rootPath]
             completionHandler(Result.success(result))
         }  // end closure
     
@@ -207,11 +208,9 @@ class ViewController: UICollectionViewController {
     let photo = photos[rowNumber]
     cell.textLabel.text = photo.title == "" ? "No Title" : photo.title
     let url = photo.remoteURL
-    
    // cell.imageView?.pin_updateWithProgress = true
-    
-    
-      cell.imageView?.pin_setImage(from: url, placeholderImage: UIImage(named: "placeholder.png"))
+    cell.imageView?.pin_setImage(from: url, placeholderImage: UIImage(named: "placeholder.png"))
+    //cell.imageView?.pin_setImage(from: url, placeholderImage: nil )
         { result in
             if let cellToUpdate = self.collView.cellForItem(at: indexPath)    {
               print("Cell upating at row: \(rowNumber + 1) ")
@@ -221,83 +220,6 @@ class ViewController: UICollectionViewController {
     return cell
   }
   
-  
-  
-  
-  
-  
-  
-  
-  
-  /*
-  
-  override public func collectionView (_ collectionView: UICollectionView,
-                                       willDisplay cell: UICollectionViewCell,
-                                       forItemAt indexPath: IndexPath )  {
-    
-    
-    let rowNumber = (indexPath as IndexPath).row
-    //print("Will display: \(rowNumber)")
-    let photo = photos[rowNumber]
-
-    self.fetchImageForPhoto(photo: photo)
-        { result in
-            if case ImageResult.success(let image) = result {
-              OperationQueue.main.addOperation() {
-                if let cell = self.collView.cellForItem(at: indexPath) as? Cell {
-                  cell.updateWithImage(photo.image)
-                }
-              }
-            }
-        } // end closure
-    
-  } //end method
-  
-  */
-
-  
-  
-  /*
-  
-  func fetchImageForPhoto(photo: Item,  completion: @escaping (ImageResult) -> Void)  {
-    
-    if let index = photos.index(of: photo)  {
-    
-       print("Fetching Image from Internet for Row: \(index + 1) ")
-    
-    }
-    
-    if let image = photo.image  {  // Object already has Image ... no need to fetch from Internet
-        completion(.success(image) )
-    }
-    let photoURL = photo.remoteURL
-    let request = URLRequest(url: photoURL )
-    
-    Alamofire.request(request).response
-      {  response in
-        guard response.error == nil else {
-          return
-        }
-        guard response.data != nil else {
-          return
-        }
-        var result:ImageResult
-        if  let  image = UIImage(data: response.data!)  {
-          result = ImageResult.success(image)
-        } else {
-          result = ImageResult.failure("Could not create Photot" as! Error)
-        }
-        
-        if case let ImageResult.success(image) = result {
-          photo.image  = image
-        }
-        
-        completion(result)
-    } // end closure
-    
-  } // end func
-  
-  */
   
   
   
