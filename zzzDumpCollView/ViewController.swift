@@ -24,6 +24,10 @@ class ViewController: UICollectionViewController {
   let url = "https://api.flickr.com/services/rest?api_key=a6d819499131071f158fd740860a5a88&method=flickr.photos.getRecent&format=json&nojsoncallback=1&extras=url_h,date_taken"
   let rootPath = ["photos","photo"]
   
+  var queue1 = OperationQueue()
+  
+  
+  
   
   @IBOutlet var collView: UICollectionView!
   
@@ -208,15 +212,29 @@ class ViewController: UICollectionViewController {
     let photo = photos[rowNumber]
     cell.textLabel.text = photo.title == "" ? "No Title" : photo.title
     let url = photo.remoteURL
-   // cell.imageView?.pin_updateWithProgress = true
-    cell.imageView?.pin_setImage(from: url, placeholderImage: UIImage(named: "placeholder.png"))
-    //cell.imageView?.pin_setImage(from: url, placeholderImage: nil )
-        { result in
-            if let cellToUpdate = self.collView.cellForItem(at: indexPath)    {
-              print("Cell upating at row: \(rowNumber + 1) ")
-              cellToUpdate.setNeedsLayout()
+    
+    
+    
+    //let operation1 = BlockOperation(block: {
+       // cell.imageView?.pin_updateWithProgress = true
+        cell.imageView?.pin_setImage(from: url, placeholderImage: UIImage(named: "placeholder.png"))
+        //cell.imageView?.pin_setImage(from: url, placeholderImage: nil )
+            { result in
+                if let cellToUpdate = self.collView.cellForItem(at: indexPath)    {
+                  print("Cell upating at row: \(rowNumber + 1) ")
+                  cellToUpdate.setNeedsLayout()
+                }
             }
-        }
+        
+    
+    //  } ) // end block
+    
+    
+    
+    
+    //queue1.addOperation(operation1)
+    
+    
     return cell
   }
   

@@ -18,6 +18,8 @@ class ViewController2: UIViewController {
   
   var photo: Item!
  // var store: ViewController!
+  var queue1 = OperationQueue()
+  
   
   
   @IBOutlet weak var imageViewDetail: UIImageView!
