@@ -53,6 +53,32 @@ class ViewController: UICollectionViewController {
   
   
   
+  
+  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    PINRemoteImageManager.shared().cache.removeAllObjects()
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    PINRemoteImageManager.shared().cache.removeAllObjects()
+  }
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -82,7 +108,7 @@ class ViewController: UICollectionViewController {
     
       getJSONObject(for: url, completionHandler: handler)
     
-    } // end viewDidLoad
+  } // end viewDidLoad
 
   
   
@@ -118,8 +144,9 @@ class ViewController: UICollectionViewController {
       let datetaken = Constants.Configuration.dateFormatter.date(from: dateString),
       let datetakenunknown = json["datetakenunknown"].string
       else {
-        return nil    // don't have enough info, print("returing nil here" )
+         return nil    // don't have enough info, print("returing nil here" )
     }
+    
     return Item(title: title, photoID: photoID, remoteURL: url, dateTaken: datetaken, datetakenUnknown: datetakenunknown)
   }
   
@@ -216,76 +243,24 @@ class ViewController: UICollectionViewController {
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! Cell
     let rowNumber = (indexPath as IndexPath).row
-    //print("CellForItemAtRow: \(rowNumber)")
+    print("CellForItemAtRow: \(rowNumber + 1)")
     let photo = photos[rowNumber]
     cell.textLabel.text = photo.title == "" ? "No Title" : photo.title
     let url = photo.remoteURL
+      //print("This thread: \(Thread.current)  ")
     
-    
-    /*
-    let operation1 = BlockOperation() {
-        cell.imageView?.pin_setImage(from: url, placeholderImage: nil )   {
-            result in
-                if let cellToUpdate = self.collView.cellForItem(at: indexPath)  as? Cell  {
-                  print("Cell upating at row: \(rowNumber + 1) ")
-                  //cellToUpdate.spinner.removeFromSuperview()
-                  // cellToUpdate.spinner.stopAnimating()
-                  
-                  cell.spinner.stopAnimating()
-                  
-                  //cellToUpdate.spinner.isHidden = true
-                  cellToUpdate.setNeedsLayout()
-                }
-            } // end closure
-      }  // end block
-    
-    queue1.addOperation(operation1)
-    */
-    
-    
-    /*
-    let operation1 = BlockOperation() {
-      cell.imageView?.pin_setImage(from: url, placeholderImage: nil )
-      { [weak self]     result in
-          print("Cell upating at row: \(rowNumber + 1) ")
-          cell.spinner.stopAnimating()
-          cell.setNeedsLayout()
-      } // end closure
-    }  // end block
-    
-    queue1.addOperation(operation1)
-    */
-    
-    
-    
-    
-    //let operation1 = BlockOperation() {
-      print("This thread: \(Thread.current)  ")
       cell.imageView?.pin_setImage(from: url, placeholderImage: nil )   {
         [weak self] result in
-        print("Closure thread: \(Thread.current)  ")
         if let cellToUpdate = self?.collView?.cellForItem(at: indexPath)  as? Cell  {
-          //print("Cell upating at row: \(rowNumber + 1) ")
+          print("   Cell upating at row: \(rowNumber + 1) ")
           cellToUpdate.spinner.stopAnimating()
           cellToUpdate.setNeedsLayout()
         }
       } // end closure
-    //}  // end block
-    
-   // queue1.addOperation(operation1)
-    
-    
-    
-    
-    
     
     
     return cell
   }
-  
-  
-  
-  
   
   
   
@@ -298,14 +273,24 @@ class ViewController: UICollectionViewController {
                                willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! Cell
-    cell.spinner.stopAnimating()
+   
+    let rowNumber = (indexPath as IndexPath).row
+    print("   WillDisplayCellForRow: \(rowNumber + 1 )")
+    
+    if cell.spinner != nil {
+       cell.spinner.stopAnimating()
+    }else {
+      print("spinner nil")
+    }
+    
+    
     
     
   }
   
+  
   */
-  
-  
+ 
   
   
 

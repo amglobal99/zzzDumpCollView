@@ -47,8 +47,7 @@ class Cell: UICollectionViewCell {
   override func prepareForReuse() {
     super.prepareForReuse()
     //updateWithImage(nil )
-    
-    spinner.startAnimating()
+    //spinner.startAnimating()   // Seems to be causing probems with PINRemoteImage. Check
     imageView.image = nil
   }
   
