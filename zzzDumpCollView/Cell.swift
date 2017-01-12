@@ -16,15 +16,19 @@ class Cell: UICollectionViewCell {
   
   @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var textLabel: UILabel!
-    
   
-  /*
+  @IBOutlet weak var spinner: UIActivityIndicatorView!
+  
+  
+  
+  
+  
   func updateWithImage(_ image: UIImage?) {
     if let imageToDisplay = image {
       spinner .stopAnimating()
       imageView.image = imageToDisplay
     } else {
-      spinner .startAnimating()
+      spinner.startAnimating()
       imageView.image = nil
     }
   }  //end method
@@ -33,17 +37,22 @@ class Cell: UICollectionViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    updateWithImage(nil )
+    //updateWithImage(nil )
+    spinner.startAnimating()
+    imageView.image = nil
   }
   
   
 
   override func prepareForReuse() {
     super.prepareForReuse()
-    updateWithImage(nil )
+    //updateWithImage(nil )
+    
+    spinner.startAnimating()
+    imageView.image = nil
   }
   
-  */
+ 
   
   
   

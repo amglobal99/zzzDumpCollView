@@ -19,6 +19,14 @@ import PINCache
 class ViewController: UICollectionViewController {
 
   
+  
+  
+  @IBOutlet weak var spinner: UIActivityIndicatorView!
+  
+  
+  
+  
+  
   var photos: [Item] = []
   var isDataLoaded: Bool =  false
   let url = "https://api.flickr.com/services/rest?api_key=a6d819499131071f158fd740860a5a88&method=flickr.photos.getRecent&format=json&nojsoncallback=1&extras=url_h,date_taken"
@@ -214,30 +222,88 @@ class ViewController: UICollectionViewController {
     let url = photo.remoteURL
     
     
-    
-    //let operation1 = BlockOperation(block: {
-       // cell.imageView?.pin_updateWithProgress = true
-        cell.imageView?.pin_setImage(from: url, placeholderImage: UIImage(named: "placeholder.png"))
-        //cell.imageView?.pin_setImage(from: url, placeholderImage: nil )
-            { result in
-                if let cellToUpdate = self.collView.cellForItem(at: indexPath)    {
+    /*
+    let operation1 = BlockOperation() {
+        cell.imageView?.pin_setImage(from: url, placeholderImage: nil )   {
+            result in
+                if let cellToUpdate = self.collView.cellForItem(at: indexPath)  as? Cell  {
                   print("Cell upating at row: \(rowNumber + 1) ")
+                  //cellToUpdate.spinner.removeFromSuperview()
+                  // cellToUpdate.spinner.stopAnimating()
+                  
+                  cell.spinner.stopAnimating()
+                  
+                  //cellToUpdate.spinner.isHidden = true
                   cellToUpdate.setNeedsLayout()
                 }
-            }
-        
+            } // end closure
+      }  // end block
     
-    //  } ) // end block
+    queue1.addOperation(operation1)
+    */
+    
+    
+    /*
+    let operation1 = BlockOperation() {
+      cell.imageView?.pin_setImage(from: url, placeholderImage: nil )
+      { [weak self]     result in
+          print("Cell upating at row: \(rowNumber + 1) ")
+          cell.spinner.stopAnimating()
+          cell.setNeedsLayout()
+      } // end closure
+    }  // end block
+    
+    queue1.addOperation(operation1)
+    */
     
     
     
     
-    //queue1.addOperation(operation1)
+    //let operation1 = BlockOperation() {
+      print("This thread: \(Thread.current)  ")
+      cell.imageView?.pin_setImage(from: url, placeholderImage: nil )   {
+        [weak self] result in
+        print("Closure thread: \(Thread.current)  ")
+        if let cellToUpdate = self?.collView?.cellForItem(at: indexPath)  as? Cell  {
+          //print("Cell upating at row: \(rowNumber + 1) ")
+          cellToUpdate.spinner.stopAnimating()
+          cellToUpdate.setNeedsLayout()
+        }
+      } // end closure
+    //}  // end block
+    
+   // queue1.addOperation(operation1)
+    
+    
+    
+    
+    
     
     
     return cell
   }
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ /*
+  
+  override func collectionView(_ collectionView: UICollectionView,
+                               willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! Cell
+    cell.spinner.stopAnimating()
+    
+    
+  }
+  
+  */
   
   
   
